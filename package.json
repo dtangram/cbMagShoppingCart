@@ -2,18 +2,18 @@
   "name": "wd6-cart",
   "version": "1.0.0",
   "description": "",
-  "main": "index.tsx",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-reactjs": "npm install --prefix reactjs",
+    "install-reactjs": "npm install --prefix reactjs --legacy-peer-deps",
     "install-api": "npm install --prefix api",
     "build-reactjs": "npm run build --prefix reactjs",
-    "build-api": "npm run --prefix api",
+    "build-api": "npm run build --prefix api",
     "start:api": "npm start --prefix api",
     "start:react": "npm start --prefix reactjs",
-    "start": "concurrently --raw \"npm:start:api\" \"npm:start:react\"",
+    "start": "node server.js",
     "dev": "concurrently --raw \"npm:start:api\" \"npm:start:react\"",
-    "heroku-postbuild": "concurrently \"npm:install-*\"; concurrently \"npm:build-*\";"
+    "heroku-postbuild": "npm run install-api && npm run install-reactjs && npm run build-reactjs"
   },
   "repository": {
     "type": "git",
@@ -26,16 +26,10 @@
   },
   "homepage": "https://github.com/dtangram/cbShoppingCart#readme",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "debug": "^4.4.3",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "debug": "^4.4.3"
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "@types/node": "^20.10.5",
-    "@types/express": "^4.17.21",
-    "@types/debug": "^4.1.12",
-    "tsx": "^4.7.0",
     "concurrently": "^9.1.0",
     "nodemon": "^3.1.7"
   }
