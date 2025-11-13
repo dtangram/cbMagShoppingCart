@@ -1,0 +1,132 @@
+.signupForm, .signupForm .wrapper form {
+  margin: 0 auto; }
+
+/* Magnanimous Comic Book Shop
+Author/Developer:  Douglas T. Angram
+WDD-469 Project & Portfolio - Full Sail University
+Source:  main.css
+*/
+/* Style the logo & more */
+header {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999; }
+
+figure {
+  margin: 0; }
+
+.nav-wrapper, .card .card-image a .btn-floating {
+  background: #731BBD !important; }
+
+.nav-wrapper {
+  height: 90px; }
+  .nav-wrapper > .container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 100%; }
+    .nav-wrapper > .container section {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 30%; }
+      .nav-wrapper > .container section a:nth-child(1) {
+        margin-right: 5%; }
+      .nav-wrapper > .container section a:nth-child(1) figure {
+        height: auto;
+        margin: 0;
+        padding: 0; }
+      .nav-wrapper > .container section a:nth-child(1) figure img {
+        position: relative;
+        width: 70px; }
+      .nav-wrapper > .container section a:nth-child(2) .brand-title {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0; }
+      .nav-wrapper > .container section a:nth-child(2):hover {
+        color: #FFF;
+        text-decoration: none; }
+    .nav-wrapper > .container .right li a:hover {
+      background: #AECEAB;
+      color: #731BBD; }
+
+div > article:nth-child(2).container {
+  margin-top: 140px !important; }
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+
+.material-icons {
+  cursor: pointer;
+  font-size: 2.4em; }
+
+.card {
+  width: 300px; }
+  .card .card-image figure {
+    height: 410px;
+    overflow: hidden; }
+  .card .card-content .card-title {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold; }
+
+.motoCart {
+  margin-top: 40px; }
+
+.collection .collection-item {
+  display: flex; }
+
+.collection-item .item-desc {
+  align-self: center; }
+
+.collection-item.avatar .title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #731BBD;
+  display: block;
+  margin-bottom: 20px; }
+
+.collection .collection-item img {
+  margin-right: 25px;
+  width: 150px; }
+
+.checkout .btn {
+  background-color: #731BBD;
+  color: #FFF; }
+
+.signupForm {
+  margin-top: 150px;
+  width: 50%; }
+  .signupForm .wrapper h3 {
+    margin-bottom: 20px;
+    text-align: center; }
+  .signupForm .wrapper form {
+    background: #AECEAB;
+    border: solid 3px #731BBD;
+    border-radius: 12px;
+    color: #FFF;
+    padding: 5%;
+    width: 50%; }
+    .signupForm .wrapper form fieldset {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+    .signupForm .wrapper form fieldset input {
+      background: #FFF;
+      padding: 3px 8px; }
+    .signupForm .wrapper form fieldset input[type=text]:not(.browser-default):focus:not([readonly]) {
+      border: solid 3px #731BBD;
+      border-bottom: solid 3px #731BBD;
+      box-shadow: none; }
+    .signupForm .wrapper form fieldset label {
+      color: #731BBD;
+      font-size: 1.2rem; }

@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "douglast.angram",
+    "password": null,
+    "database": "cbshoppingcart_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "staging": {
+    "username": "postgres",
+    "password": "password",
+    "database": "comics_db_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}

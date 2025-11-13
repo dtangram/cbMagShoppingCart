@@ -1,0 +1,205 @@
+/* Magnanimous Comic Book Shop
+Author/Developer:  Douglas T. Angram
+WDD-469 Project & Portfolio - Full Sail University
+Source:  main.css
+*/
+
+
+/* Style the logo & more */
+header{
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+figure{
+  margin: 0;
+}
+
+.nav-wrapper, .card .card-image a .btn-floating{
+  background: $colorPurple !important;
+}
+
+.nav-wrapper{
+  height: 90px;
+
+  > .container{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 90px;
+    justify-content: space-around;
+    max-width: 100%;
+    width: 100%;
+
+    section{
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 30%;
+
+      a:nth-child(1){
+        margin-right: 5%;
+      }
+
+      a:nth-child(1) figure{
+        height: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      a:nth-child(1) figure img{
+        position: relative;
+        width: 70px;
+      }
+
+      a:nth-child(2){
+        .brand-title{
+          font-size: 25px;
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+        }
+
+        &:hover{
+          color: $colorWhite;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .right{
+      li a:hover{
+        background: $colorGreen;
+        color: $colorPurple;
+      }
+    }
+  }
+}
+
+div{
+  > article:nth-child(2).container{
+    margin-top: 140px !important;
+  }
+}
+
+.box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.material-icons{
+  cursor: pointer;
+  font-size: 2.4em;
+}
+
+.card{
+  // background: $colorGreen !important;
+  width: 300px;
+
+  .card-image{
+    figure{
+      height: 410px;
+      overflow: hidden;
+    }
+  }
+
+  .card-content{
+    .card-title{
+      color: black;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    // .card-content p:last-child{
+    //   color: $colorGreen !important;
+    // }
+  }
+
+
+
+
+}
+
+.motoCart{
+  margin-top:40px;
+}
+
+.collection .collection-item{
+  display: flex;
+}
+
+.collection-item{
+  .item-desc{
+    align-self: center;
+  }
+}
+
+.collection-item.avatar .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: $colorPurple;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.collection .collection-item img{
+  margin-right: 25px;
+  width: 150px;
+}
+
+.checkout{
+  .btn{
+    background-color: $colorPurple;
+    color: $colorWhite;
+  }
+}
+
+.signupForm{
+  @extend %center-element;
+  margin-top: 150px;
+  width: 50%;
+
+  .wrapper{
+    h3{
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form{
+      background: $colorGreen;
+      border: solid 3px $colorPurple;
+      border-radius: 12px;
+      color: $colorWhite;
+      @extend %center-element;
+      padding: 5%;
+      width: 50%;
+
+      fieldset{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      fieldset input{
+        background: $colorWhite;
+        padding: 3px 8px;
+      }
+
+      fieldset input[type=text]:not(.browser-default):focus:not([readonly]){
+        border: solid 3px $colorPurple;
+        border-bottom: solid 3px $colorPurple;
+        box-shadow: none;
+      }
+
+      fieldset label{
+        color: $colorPurple;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
