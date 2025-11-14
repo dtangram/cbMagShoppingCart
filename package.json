@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-reactjs": "npm install --prefix reactjs --legacy-peer-deps",
+    "install-reactjs": "cd reactjs && NPM_CONFIG_PRODUCTION=false npm install --legacy-peer-deps",
     "install-api": "npm install --prefix api",
     "build-reactjs": "npm run build --prefix reactjs",
     "build-api": "npm run build --prefix api",
