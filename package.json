@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-reactjs": "cd reactjs && NPM_CONFIG_PRODUCTION=false npm install --legacy-peer-deps",
-    "install-api": "npm install --prefix api",
-    "build-reactjs": "npm run build --prefix reactjs",
-    "build-api": "npm run build --prefix api",
-    "start:api": "npm start --prefix api",
-    "start:react": "npm start --prefix reactjs",
+    "install-reactjs": "cd reactjs && NPM_CONFIG_PRODUCTION=false npm install",
+    "install-api": "cd api && npm install",
+    "build-reactjs": "cd reactjs && npm run build",
+    "build-api": "cd api && npm run build",
+    "start:api": "cd api && npm start",
+    "start:react": "cd reactjs && npm start",
     "start": "node server.js",
     "dev": "concurrently --raw \"npm:start:api\" \"npm:start:react\"",
     "heroku-postbuild": "npm run install-api && npm run install-reactjs && npm run build-reactjs"
