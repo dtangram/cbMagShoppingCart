@@ -1,8 +1,3 @@
-/* Magnanimous Comic Book Shop
-Author/Developer:  Douglas T. Angram
-WDD-469 Project & Portfolio - Full Sail University
-Source:  ShippingTotal.tsx
-*/
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addShipping, subtractShipping } from '../actions/motocartActions';

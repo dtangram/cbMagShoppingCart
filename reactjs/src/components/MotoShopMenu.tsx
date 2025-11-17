@@ -1,9 +1,3 @@
-/* Magnanimous Comic Book Shop
-Author/Developer:  Douglas T. Angram
-WDD-469 Project & Portfolio - Full Sail University
-Source:  motoShopMenu.js
-*/
-
 import { Link } from 'react-router-dom'
 
 const motoshopMenu = () => {
