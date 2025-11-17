@@ -24,17 +24,20 @@ interface CartState {
 interface CartAction {
   type: string;
   id?: number;
+  [key: string]: string | number | undefined;
 }
 
+const initialItems: CartItem[] = [
+  { id: 1, title: 'Batman #497', desc: 'VG Condition', price: 10, quantity: 1, img: Item1 },
+  { id: 2, title: 'Superman #75', desc: 'NM Condition', price: 21, quantity: 1, img: Item2 },
+  { id: 3, title: 'Captain America #25 Vol. 2', desc: 'NM Condition', price: 43, quantity: 1, img: Item3 },
+  { id: 4, title: 'Spider-Man #700', desc: 'Mint Condition', price: 16, quantity: 1, img: Item4 },
+  { id: 5, title: 'Spawn #1', desc: 'Fine Condition', price: 10, quantity: 1, img: Item5 },
+  { id: 6, title: 'The Maxx #2', desc: 'VG Condition', price: 6, quantity: 1, img: Item6 }
+];
+
 const initState: CartState = {
-  items: [
-    { id: 1, title: 'Batman #497', desc: 'VG Condition', price: 10, quantity: 1, img: Item1 },
-    { id: 2, title: 'Superman #75', desc: 'NM Condition', price: 21, quantity: 1, img: Item2 },
-    { id: 3, title: 'Captain America #25 Vol. 2', desc: 'NM Condition', price: 43, quantity: 1, img: Item3 },
-    { id: 4, title: 'Spider-Man #700', desc: 'Mint Condition', price: 16, quantity: 1, img: Item4 },
-    { id: 5, title: 'Spawn #1', desc: 'Fine Condition', price: 10, quantity: 1, img: Item5 },
-    { id: 6, title: 'The Maxx #2', desc: 'VG Condition', price: 6, quantity: 1, img: Item6 }
-  ],
+  items: initialItems,
   addedItems: [],
   total: 0
 };
@@ -42,83 +45,78 @@ const initState: CartState = {
 const motocartReducer = (state = initState, action: CartAction): CartState => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const addedItem = state.items.find(item => item.id === action.id);
-      if (!addedItem) return state;
+      const item = state.items.find(item => item.id === action.id);
+      if (!item) return state;
 
-      const existedItem = state.addedItems.find(item => item.id === action.id);
+      const existingItem = state.addedItems.find(item => item.id === action.id);
 
-      if (existedItem) {
-        addedItem.quantity += 1;
+      if (existingItem) {
         return {
           ...state,
-          total: state.total + addedItem.price
-        };
-      } else {
-        addedItem.quantity = 1;
-        return {
-          ...state,
-          addedItems: [...state.addedItems, addedItem],
-          total: state.total + addedItem.price
+          addedItems: state.addedItems.map(item =>
+            item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item
+          ),
+          total: state.total + item.price
         };
       }
+
+      return {
+        ...state,
+        addedItems: [...state.addedItems, { ...item, quantity: 1 }],
+        total: state.total + item.price
+      };
     }
 
     case REMOVE_ITEM: {
       const itemToRemove = state.addedItems.find(item => item.id === action.id);
       if (!itemToRemove) return state;
 
-      const newItems = state.addedItems.filter(item => item.id !== action.id);
-      const newTotal = state.total - (itemToRemove.price * itemToRemove.quantity);
-
       return {
         ...state,
-        addedItems: newItems,
-        total: newTotal
+        addedItems: state.addedItems.filter(item => item.id !== action.id),
+        total: state.total - (itemToRemove.price * itemToRemove.quantity)
       };
     }
 
     case ADD_QUANTITY: {
-      const addedItem = state.items.find(item => item.id === action.id);
-      if (!addedItem) return state;
+      const item = state.addedItems.find(item => item.id === action.id);
+      if (!item) return state;
 
-      addedItem.quantity += 1;
       return {
         ...state,
-        total: state.total + addedItem.price
+        addedItems: state.addedItems.map(item =>
+          item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item
+        ),
+        total: state.total + item.price
       };
     }
 
     case SUB_QUANTITY: {
-      const addedItem = state.items.find(item => item.id === action.id);
-      if (!addedItem) return state;
+      const item = state.addedItems.find(item => item.id === action.id);
+      if (!item) return state;
 
-      if (addedItem.quantity === 1) {
-        const newItems = state.addedItems.filter(item => item.id !== action.id);
+      if (item.quantity === 1) {
         return {
           ...state,
-          addedItems: newItems,
-          total: state.total - addedItem.price
-        };
-      } else {
-        addedItem.quantity -= 1;
-        return {
-          ...state,
-          total: state.total - addedItem.price
+          addedItems: state.addedItems.filter(item => item.id !== action.id),
+          total: state.total - item.price
         };
       }
+
+      return {
+        ...state,
+        addedItems: state.addedItems.map(item =>
+          item.id === action.id ? { ...item, quantity: item.quantity - 1 } : item
+        ),
+        total: state.total - item.price
+      };
     }
 
     case ADD_SHIPPING:
-      return {
-        ...state,
-        total: state.total + 6
-      };
+      return { ...state, total: state.total + 6 };
 
     case SUB_SHIPPING:
-      return {
-        ...state,
-        total: state.total - 6
-      };
+      return { ...state, total: state.total - 6 };
 
     default:
       return state;
